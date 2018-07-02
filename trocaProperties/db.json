@@ -1,0 +1,14 @@
+{
+  "posts": [],
+  "user": {},
+  "count": 9,
+  "historico": [],
+  "preferencias": [
+    {
+      "id": 1,
+      "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
+      "caminhoProperties": "/Users/Natan",
+      "caminhoArquivos": "/Users/Natan/clinicaProperties"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  h1= title
+  
+  p A branch atual é: #[span.branch #{branch_atual}]
+
+  ul(class="tab" id="tab")
+   li(class='tab-item active', data-tab="home") #[a Home ]
+   li(class='tab-item', data-tab="configuracao") #[a Configuração ]
+   li(class='tab-item', data-tab="historico") #[a Histórico ]
+   
+  div(class='tab-content' id="tab-container")
+   div(class='tab-content-item active xs-1', id="home")
+    p diretório #{preferences.caminhoGit}
+    p branch #{branch_atual}
+
+   div(class='tab-content-item xs-1', id="configuracao")
+    h3 Configurações
+    form(action="/configuracao/salvar", method="post")
+
+     input(type="hidden" name="preference.id" value="#{preferences.id}")
+
+     div(class="form-control")
+      label(class="xs-4 text-right") Caminho do repositorio
+      input(type="text" class="xs-2" name="preference.caminhoGit" value="#{preferences.caminhoGit}")
+
+     div(class="form-control")
+      label(class="xs-4 text-right") Caminho da propriedade
+      input(type="text" class="xs-2" name="preference.caminhoProperties" value="#{preferences.caminhoProperties}")
+
+     div(class="form-control")
+      label(class="xs-4 text-right") Caminho dos arquivos de propriedade
+      input(type="text" class="xs-2" name="preference.caminhoArquivos" value="#{preferences.caminhoArquivos}")
+
+     div(class="form-actions") 
+      div(class="align-right")
+        button(class="button btn-save", type="submit") Salvar 
+
+   div(class='tab-content-item xs-1', id="historico")
+    h3 Historico das trocas de branch
+    #{historico}

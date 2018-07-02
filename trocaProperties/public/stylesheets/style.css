@@ -1,0 +1,116 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.branch {
+    color: #148a18;
+    font-size: 19px;
+}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    border: solid 1px #d6d5da;
+}
+
+li.tab-item {
+    float: left;
+    cursor: pointer;
+}
+
+li.tab-item a {
+    display: block;
+    color: #736d62;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li.tab-item.active a {
+    border-bottom: solid 3px green;
+}
+
+li.item-tab a:hover {
+    background-color: #111111;
+}
+
+.tab-content .tab-content-item {
+    display: none;
+}
+
+.tab-content .tab-content-item.active {
+    display: inline-block;
+}
+
+.tab-content {
+    border: solid #d6d5da;
+    border-width: 0px 1px 1px 1px;
+    padding: 15px 10px;
+    min-height: 500px;
+}
+
+.button{
+    padding: 10px 23px;
+    background-color: #ffffff;
+    font-size: 17px;
+    color: #0b5827;
+}
+
+.btn-save {
+    border: solid 2px #168634;
+}
+
+.btn-link {
+    border: solid 2px transparent;
+    text-decoration: underline;
+}
+
+.align-right{
+    float: right;
+}
+
+form .form-control {
+    display: block;
+    padding: 5px;
+}
+
+form .form-control label {
+    margin-right: 10px;
+    display:inline-block;
+}
+
+form .form-control input {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.form-actions{
+    margin: 20px 100px 20px 100px;
+    border-top: solid 1px #d2d2d2;
+    padding-top: 7px;
+}
+
+.xs-1{
+    width: 100%;
+}
+.xs-2{
+    width: 50%;
+}
+.xs-3{
+    width: 33.33333%;
+}
+.xs-4{
+    width: 25%;
+}

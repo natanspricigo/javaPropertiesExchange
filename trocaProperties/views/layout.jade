@@ -1,0 +1,13 @@
+doctype html
+html(lang="pt-br")
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(type='text/javascript', src='/javascripts/tabs.js')
+    script(type='text/javascript', src='/javascripts/aplication.js')
+    script(type='text/javascript')
+      #[ var tabs = new Tabs("tab","tab-container"); tabs.events(); ]
