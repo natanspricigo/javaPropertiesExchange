@@ -1,14 +1,24 @@
 {
-  "posts": [],
-  "user": {},
-  "count": 9,
-  "historico": [],
+  "count": 14,
   "preferencias": [
     {
       "id": 1,
       "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
       "caminhoProperties": "/Users/Natan",
       "caminhoArquivos": "/Users/Natan/clinicaProperties"
+    },
+    {
+      "id": 1,
+      "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
+      "caminhoProperties": "/Users/Natan",
+      "caminhoArquivos": "/Users/Natan/clinicaProperties"
+    },
+    {
+      "id": 1,
+      "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
+      "caminhoProperties": "/Users/Natan",
+      "caminhoArquivos": "/Users/Natan/clinicaProperties"
     }
-  ]
+  ],
+  "historico": []
 }

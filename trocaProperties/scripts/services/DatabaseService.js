@@ -10,7 +10,9 @@ var preferencesSerice = new ps.PreferencesSerice();
 class DatabaseMananger{
 
 	constructor(){
-		db.defaults({ historico: [], preferencias: [], count: 0 }).write();
+		this.tableNames={PREFERENCIAS:"preferencias", HISTORICO: "historico"};
+		db.defaults({ preferencias: [], count: 0 }).write();
+		db.defaults({ historico: []}).write();
 		this.nativeDb = db;
 	}
 	

@@ -21,7 +21,7 @@ var branchsAcessadas = [];
 
 // ----------------Notificações ao alterar---------------
 var ch = () => {
-	var pref = dataMananger.get('preferencias', 1);
+	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
 	return branchService.getBranch(pref.caminhoGit);
 }
 var msgCreator = (oldState, newState) => {
@@ -64,7 +64,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', (req, res) => {
 
-	var pref = dataMananger.get('preferencias', 1);
+	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
 
 	routes.index(req, res, {
 		title: 'Meu git',
@@ -78,7 +78,7 @@ app.get('/users', user.list);
 
 app.get('/branch', (req, res) => {
 
-	var pref = dataMananger.get('preferencias', 1);
+	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
 
 	res.json(branchService.getBranch(pref.caminhoGit));
 });
@@ -90,8 +90,8 @@ app.get('/history', (req, res) => {
 app.post('/configuracao/salvar', (req, res) => {
 	var response = Utilitarios.http.objectFromBody(req.body, "args");
 	__DIR = response.preference.caminhoGit;
-	dataMananger.insert('preferencias', response.preference);
-
+	dataMananger.insert(dataMananger.tableNames.PREFERENCIAS, response.preference);
+	console.log(response.preference);
 	res.redirect('/');
 });
 

@@ -22,16 +22,16 @@ block content
      input(type="hidden" name="preference.id" value="#{preferences.id}")
 
      div(class="form-control")
-      label(class="xs-4 text-right") Caminho do repositorio
-      input(type="text" class="xs-2" name="preference.caminhoGit" value="#{preferences.caminhoGit}")
+      label(class="xs-4 text-right", for="caminho_git") Caminho do repositorio
+      input(type="text" class="xs-2" id="caminho_git" name="preference.caminhoGit" value="#{preferences.caminhoGit}")
 
      div(class="form-control")
-      label(class="xs-4 text-right") Caminho da propriedade
-      input(type="text" class="xs-2" name="preference.caminhoProperties" value="#{preferences.caminhoProperties}")
+      label(class="xs-4 text-right" for="caminho_properties") Caminho da propriedade
+      input(type="text" class="xs-2" id="caminho_properties" name="preference.caminhoProperties" value="#{preferences.caminhoProperties}")
 
      div(class="form-control")
-      label(class="xs-4 text-right") Caminho dos arquivos de propriedade
-      input(type="text" class="xs-2" name="preference.caminhoArquivos" value="#{preferences.caminhoArquivos}")
+      label(class="xs-4 text-right", for="caminho_preferences") Caminho dos arquivos de propriedade
+      input(type="text" class="xs-2" id="caminho_preferences" name="preference.caminhoArquivos" value="#{preferences.caminhoArquivos}")
 
      div(class="form-actions") 
       div(class="align-right")
