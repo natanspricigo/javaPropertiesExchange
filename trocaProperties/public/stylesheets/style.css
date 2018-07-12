@@ -68,6 +68,10 @@ li.item-tab a:hover {
     border: solid 2px #168634;
 }
 
+.btn-new {
+    border: solid 2px #6789ef;
+}
+
 .btn-link {
     border: solid 2px transparent;
     text-decoration: underline;
@@ -114,3 +118,38 @@ form .form-control input {
 .xs-4{
     width: 25%;
 }
+
+.modal{
+    display: block;
+    position: absolute;
+    height: 80%;
+    background-color: #176465f7;
+    color: #fff;
+    left: 0;
+    right: 0;
+    top: 5%;
+    z-index: 1000;
+}
+
+.modal-head{
+    display: block;
+    border-bottom: solid 1px #176465;
+    padding: 20px 40px 20px 40px;
+}
+
+
+.modal-head span{
+    font-size: 25px;
+}
+
+.modal-head a.close{
+    float: right;
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.modal-body{
+    padding: 20px 50px 20px 50px;
+}
+
