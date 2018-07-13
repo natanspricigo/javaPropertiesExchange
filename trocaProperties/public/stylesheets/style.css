@@ -66,6 +66,7 @@ li.item-tab a:hover {
 
 .btn-save {
     border: solid 2px #168634;
+    background-color: transparent;
 }
 
 .btn-new {
@@ -123,7 +124,7 @@ form .form-control input {
     display: block;
     position: absolute;
     height: 80%;
-    background-color: #234a73e8;
+    background-color: #234a73fc;
     color: #fff;
     left: 0;
     right: 0;

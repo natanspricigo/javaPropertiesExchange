@@ -65,12 +65,14 @@ if ('development' == app.get('env')) {
 app.get('/', (req, res) => {
 
 	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
+	var mapa = dataMananger.getAll(dataMananger.tableNames.MAPA);
 
 	routes.index(req, res, {
 		title: 'Meu git',
 		branch_atual: branchService.getBranch(pref.caminhoGit),
 		preferences: pref,
-		historico: JSON.stringify(branchsAcessadas)
+		historico: JSON.stringify(branchsAcessadas),
+		mapa : mapa
 	})
 });
 
@@ -94,6 +96,14 @@ app.post('/configuracao/salvar', (req, res) => {
 	console.log(response.preference);
 	res.redirect('/');
 });
+
+app.post('/mapa/salvar', (req, res) => {
+	var response = Utilitarios.http.objectFromBody(req.body, "args");
+	console.log(response.mapa);
+	dataMananger.insert(dataMananger.tableNames.MAPA, response.mapa);
+	res.redirect('/');
+});
+
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));

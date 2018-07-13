@@ -10,9 +10,10 @@ var preferencesSerice = new ps.PreferencesSerice();
 class DatabaseMananger{
 
 	constructor(){
-		this.tableNames={PREFERENCIAS:"preferencias", HISTORICO: "historico"};
+		this.tableNames={PREFERENCIAS:"preferencias", HISTORICO: "historico", MAPA:"mapa"};
 		db.defaults({ preferencias: [], count: 0 }).write();
 		db.defaults({ historico: []}).write();
+		db.defaults({ mapa: []}).write();
 		this.nativeDb = db;
 	}
 	
@@ -54,6 +55,11 @@ class DatabaseMananger{
 		}else{
 			return preferencesSerice.newPreference();
 		}
+	}
+	
+	getAll(table){
+		return db.get(table)
+		  .value()
 	}
 
 	update(table, newData){

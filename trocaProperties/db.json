@@ -1,5 +1,5 @@
 {
-  "count": 14,
+  "count": 16,
   "preferencias": [
     {
       "id": 1,
@@ -20,5 +20,17 @@
       "caminhoArquivos": "/Users/Natan/clinicaProperties"
     }
   ],
-  "historico": []
+  "historico": [],
+  "mapa": [
+    {
+      "branch": "master",
+      "nomeArquivo": "production",
+      "id": 1
+    },
+    {
+      "branch": "fast",
+      "nomeArquivo": "fast",
+      "id": 1
+    }
+  ]
 }

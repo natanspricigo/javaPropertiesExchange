@@ -16,12 +16,15 @@ class Modal{
     
     get getTemplate(){
     	return '<div id="{{id}}" class="modal" style="display:nome" >'
-		    		+'<div class="modal-head"><span>{{modal-title}}</span><a href="#" class="close">x</a></div>'
-		    		+'<div class="modal-body">{{modal-body}}</div>'
+		    		+'<div class="modal-head"><span>{{modalTitle}}</span><a href="#" class="close">x</a></div>'
+		    		+'<div class="modal-body">{{modalBody}}</div>'
     			+'</div>';
     }
 
     compile(props){
+    	if (props.modalBody && typeof props.modalBody == 'function') {
+    		props.modalBody = props.modalBody(props);
+    	};
     	return Utils.formatTemplate(props, this.template);
     }
     
