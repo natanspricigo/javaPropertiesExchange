@@ -40,13 +40,8 @@ block content
 
    div(class='tab-content-item xs-1', id="mapper")
     h3 Mapa branch - arquivo
-    button(class="button btn-new", type="submit") Novo
+    button(class="button btn-new", type="submit", onclick="modalNovoItemMapa.open()") Novo
 
    div(class='tab-content-item xs-1', id="historico")
     h3 Historico das trocas de branch
     #{historico}
-  div(class="modal" style="display:none")
-    div(class="modal-head")
-      span Modal
-      a(class="close" href="#") x
-    div(class="modal-body") corpo do Modal

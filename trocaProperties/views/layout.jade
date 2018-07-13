@@ -7,7 +7,11 @@ html
   body
     block content
     script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(type='text/javascript', src='/javascripts/Utlils.js')
     script(type='text/javascript', src='/javascripts/tabs.js')
+    script(type='text/javascript', src='/javascripts/modal.js')
     script(type='text/javascript', src='/javascripts/aplication.js')
     script(type='text/javascript')
       #[ var tabs = new Tabs("tab","tab-container"); tabs.events(); ]
+      #[ var modalNovoItemMapa = new Modal({'modal-title':"Novo item do mapa", 'modal-body':"..."}); ]
+
