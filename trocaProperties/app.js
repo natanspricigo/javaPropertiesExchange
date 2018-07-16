@@ -89,6 +89,10 @@ app.get('/history', (req, res) => {
 	res.json(branchsAcessadas);
 });
 
+app.get('/remover-mapa', (req, res) => {
+	console.log("removendo...")
+});
+
 app.post('/configuracao/salvar', (req, res) => {
 	var response = Utilitarios.http.objectFromBody(req.body, "args");
 	__DIR = response.preference.caminhoGit;

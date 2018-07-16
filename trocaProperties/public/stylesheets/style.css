@@ -154,3 +154,31 @@ form .form-control input {
     padding: 20px 50px 20px 50px;
 }
 
+ul.listaMapa{
+    list-style-type: none;
+}
+
+ul.listaMapa li{
+    margin-bottom: 20px;
+}
+
+ul.listaMapa li .mp-branch{
+    border: solid 1px #eee;
+    padding: 4px;
+    margin-right: 10px;
+    color: #8335a9;
+    display: inline-block;
+}
+
+ul.listaMapa li .mp-arquivo{
+    border: solid 1px #eee;
+    padding: 4px;
+    margin-left: 10px;
+    color: #006b00;
+    display: inline-block;
+}
+
+.icon-remove{
+    color: #cc7979;
+    padding: 1px 8px 1px 8px;
+}

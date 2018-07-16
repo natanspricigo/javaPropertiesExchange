@@ -44,9 +44,13 @@ block content
     button(class="button btn-new", type="submit", onclick="modalNovoItemMapa.open()") Adicionar
     br
 
-    ul
-    each val in mapa
-      li= val.branch + '  -->  ' + val.nomeArquivo
+    ul(class="listaMapa")
+      each val in mapa
+        li(class="xs-1")
+          div(class="xs-4 mp-branch") #{val.branch}
+          i(class="fa fa-angle-double-right")
+          div(class="xs-4 mp-arquivo") #{val.nomeArquivo}.properties
+          a(class="fa fa-trash icon-remove", href="/remover-mapa?codigo=#{val.id}")
 
    div(class='tab-content-item xs-1', id="historico")
     h3 Historico das trocas de branch
