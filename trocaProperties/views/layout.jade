@@ -3,8 +3,10 @@ html(lang="pt-br")
 html
   head
     title= title
+
+    link(rel='stylesheet', href='/stylesheets/fontawesome.css', integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt", crossorigin="anonymous")
+    
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.1.0/css/all.css', integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt", crossorigin="anonymous")
 
   body
     block content
@@ -16,6 +18,5 @@ html
     script(type='text/javascript', src='/javascripts/app-client.js')
 
     script(type='text/javascript')
-      #[ var tabs = new Tabs("tab","tab-container"); tabs.events(); ]
-      #[ var modalNovoItemMapa = new Modal({'modalTitle':"Novo item do mapa", 'modalBody':getTemplateNovoItemMapa}); ]
-
+      #[ var tabs = new Tabs( "tab" , "tab-container"); tabs.events();]
+      #[ var modalNovoItemMapa = new Modal({'modalTitle' : "Novo item do mapa", "modalBody" : getTemplateNovoItemMapa});]

@@ -16,7 +16,7 @@ class Modal{
     
     get getTemplate(){
     	return '<div id="{{id}}" class="modal" style="display:nome" >'
-		    		+'<div class="modal-head"><span>{{modalTitle}}</span><a href="#" class="close">x</a></div>'
+		    		+'<div class="modal-head"><span>{{modalTitle}}</span><a href="#" class="close fa fa-times"></a></div>'
 		    		+'<div class="modal-body">{{modalBody}}</div>'
     			+'</div>';
     }

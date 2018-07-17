@@ -107,6 +107,14 @@ form .form-control input {
     padding-top: 7px;
 }
 
+.font-green{
+    color: #006b00;
+}
+
+.font-red{
+    color: #cc7979;
+}
+
 .xs-1{
     width: 100%;
 }
@@ -131,6 +139,14 @@ form .form-control input {
     top: 5%;
     z-index: 1000;
 }
+
+.modal input{
+    background-color: #5b7fab;
+    color: #fff;
+    border: solid 1px #000410;
+    border-radius: 10px;
+}
+
 
 .modal-head{
     display: block;
@@ -178,7 +194,10 @@ ul.listaMapa li .mp-arquivo{
     display: inline-block;
 }
 
-.icon-remove{
-    color: #cc7979;
+.icon{
     padding: 1px 8px 1px 8px;
+}
+
+.isAtual .mp-branch, .isAtual .mp-arquivo{
+    background-color: #eee;
 }

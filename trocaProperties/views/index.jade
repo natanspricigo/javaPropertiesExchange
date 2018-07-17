@@ -27,12 +27,16 @@ block content
       input(type="text" class="xs-2" id="caminho_git" name="preference.caminhoGit" value="#{preferences.caminhoGit}")
 
      div(class="form-control")
+      label(class="xs-4 text-right", for="caminho_preferences") Caminho dos arquivos de propriedade
+      input(type="text" class="xs-2" id="caminho_preferences" name="preference.caminhoArquivos" value="#{preferences.caminhoArquivos}")
+
+     div(class="form-control")
       label(class="xs-4 text-right" for="caminho_properties") Caminho da propriedade
       input(type="text" class="xs-2" id="caminho_properties" name="preference.caminhoProperties" value="#{preferences.caminhoProperties}")
 
      div(class="form-control")
-      label(class="xs-4 text-right", for="caminho_preferences") Caminho dos arquivos de propriedade
-      input(type="text" class="xs-2" id="caminho_preferences" name="preference.caminhoArquivos" value="#{preferences.caminhoArquivos}")
+      label(class="xs-4 text-right", for="name_out_file") Nome do arquivo de saida
+      input(type="text" class="xs-2" id="name_out_file" name="preference.nomeArquivoSaida" value="#{preferences.nomeArquivoSaida}")
 
      div(class="form-actions") 
       div(class="align-right")
@@ -43,14 +47,23 @@ block content
 
     button(class="button btn-new", type="submit", onclick="modalNovoItemMapa.open()") Adicionar
     br
+    
+    - var classBranchAtual;
 
     ul(class="listaMapa")
       each val in mapa
-        li(class="xs-1")
+
+        - classBranchAtual = val.branch == branch_atual ? 'isAtual' : '';
+
+        li(class="xs-1 #{classBranchAtual}")
           div(class="xs-4 mp-branch") #{val.branch}
           i(class="fa fa-angle-double-right")
           div(class="xs-4 mp-arquivo") #{val.nomeArquivo}.properties
-          a(class="fa fa-trash icon-remove", href="/remover-mapa?codigo=#{val.id}")
+
+          - if(classBranchAtual == '')
+            a(class="fa fa-trash font-red icon icon-remove", href="/remover-mapa?codigo=#{val.id}")
+          - else
+            i(class="fa fa-check font-green icon")
 
    div(class='tab-content-item xs-1', id="historico")
     h3 Historico das trocas de branch

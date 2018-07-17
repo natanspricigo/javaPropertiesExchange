@@ -12,10 +12,17 @@ const notifier = require('node-notifier');
 const notifyOnChange = require('./scripts/notifyOnChange');
 const branchService = require('./scripts/services/BranchService');
 const PreferencesService = require('./scripts/services/PreferencesService');
+const fileService = require('./scripts/services/FileService').fileService;
+
 const dbm = require('./scripts/services/DatabaseService');
 const Utilitarios = require('./scripts/Utilitarios/Utilitarios');
 
 const dataMananger = new dbm.DatabaseMananger();
+
+fileService.readFiles("/Users/Natan/clinicaProperties/",function(f,c){
+	console.log(f);
+},(err)=>{console.log(err)});
+
 
 var branchsAcessadas = [];
 
@@ -28,7 +35,8 @@ var msgCreator = (oldState, newState) => {
 	if (newState && newState != "") {
 		branchsAcessadas.push({
 			branchAntiga: oldState,
-			branchNova: newState
+			branchNova: newState,
+			date: new Date()
 		});
 		notifier.notify({
 			title: 'Troca de branch',
@@ -90,7 +98,8 @@ app.get('/history', (req, res) => {
 });
 
 app.get('/remover-mapa', (req, res) => {
-	console.log("removendo...")
+	console.log("removendo..."+ req.body.codigo);
+	res.redirect('/');
 });
 
 app.post('/configuracao/salvar', (req, res) => {

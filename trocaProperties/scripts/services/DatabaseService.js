@@ -26,9 +26,9 @@ class DatabaseMananger{
 
 	__findMaxIDToTable(table){
 		var cod = 0;
-		this.__getTable(table).forEach(function(index) {
+		this.getAll(table).forEach(function(index) {
 			if (index.id > cod) {
-				cod = index;
+				cod = index.id;
 			};
 		});
 		return cod;
