@@ -13,18 +13,36 @@ const notifyOnChange = require('./scripts/notifyOnChange');
 const branchService = require('./scripts/services/BranchService');
 const PreferencesService = require('./scripts/services/PreferencesService');
 const fileService = require('./scripts/services/FileService').fileService;
+const CacheService = require('./scripts/services/CacheService');
 
 const dbm = require('./scripts/services/DatabaseService');
 const Utilitarios = require('./scripts/Utilitarios/Utilitarios');
 
 const dataMananger = new dbm.DatabaseMananger();
 
-fileService.readFiles("/Users/Natan/clinicaProperties/",function(f,c){
-	console.log(f);
-},(err)=>{console.log(err)});
-
-
+var cache = new CacheService();
 var branchsAcessadas = [];
+
+
+function startCache(){
+	cache.loader((_cache) => {
+		var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
+		if (pref) {
+			fileService.readFiles(pref.caminhoArquivos+"/", function(f, c) {
+				console.log(f);
+				_cache.add(f, c);
+			}, (err) => {
+				console.log(err)
+			});
+
+			fileService.createIfNotExists(pref.caminhoProperties+"/"+pref.nomeArquivoSaida+"______.properties", "", (err)=>{
+				console.log(err);
+			});
+			
+		};
+	});
+};
+startCache();
 
 // ----------------Notificações ao alterar---------------
 var ch = () => {
@@ -80,11 +98,23 @@ app.get('/', (req, res) => {
 		branch_atual: branchService.getBranch(pref.caminhoGit),
 		preferences: pref,
 		historico: JSON.stringify(branchsAcessadas),
-		mapa : mapa
+		mapa: mapa
 	})
 });
 
 app.get('/users', user.list);
+
+app.get('/cacheFiles', (req, res) => {
+	res.json(cache.all());
+});
+
+app.get('/reloadCacheFiles', (req, res) => {
+	console.log("Limpado cache de arquivos...");
+	cache.clear();
+	startCache();
+	console.log("Cache limpo  e recarregado !");
+	res.redirect('/');
+});
 
 app.get('/branch', (req, res) => {
 
@@ -98,7 +128,7 @@ app.get('/history', (req, res) => {
 });
 
 app.get('/remover-mapa', (req, res) => {
-	console.log("removendo..."+ req.body.codigo);
+	console.log("removendo..." + req.body.codigo);
 	res.redirect('/');
 });
 

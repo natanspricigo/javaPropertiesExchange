@@ -43,6 +43,12 @@ module.exports.fileService = function() {
 					});
 				});
 			});
+		},
+		createIfNotExists: function(path, data, onComplete){
+			fs.writeFile(path, data, { flag: 'wx' }, function (err) {
+			    if (err) throw err;
+			    onComplete(err);
+			});
 		}
 	}
 }();
