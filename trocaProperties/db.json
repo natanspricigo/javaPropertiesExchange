@@ -1,5 +1,5 @@
 {
-  "count": 26,
+  "count": 27,
   "preferencias": [
     {
       "id": 1,
@@ -30,11 +30,6 @@
   ],
   "historico": [],
   "mapa": [
-    {
-      "branch": "master",
-      "nomeArquivo": "production",
-      "id": 1
-    },
     {
       "branch": "fast",
       "nomeArquivo": "fast",
@@ -74,6 +69,11 @@
       "branch": "sprint_77",
       "nomeArquivo": "sprint",
       "id": 4
+    },
+    {
+      "branch": "sprint_fast_28",
+      "nomeArquivo": "fast",
+      "id": 5
     }
   ]
 }

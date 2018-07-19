@@ -14,41 +14,21 @@ const branchService = require('./scripts/services/BranchService');
 const PreferencesService = require('./scripts/services/PreferencesService');
 const fileService = require('./scripts/services/FileService').fileService;
 const CacheService = require('./scripts/services/CacheService');
-
+const PropertiesService = require('./scripts/services/PropertiesService');
 const dbm = require('./scripts/services/DatabaseService');
+
 const Utilitarios = require('./scripts/Utilitarios/Utilitarios');
 
 const dataMananger = new dbm.DatabaseMananger();
-
 var cache = new CacheService();
 var branchsAcessadas = [];
+var propertiesService;
 
-
-function startCache(){
-	cache.loader((_cache) => {
-		var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
-		if (pref) {
-			fileService.readFiles(pref.caminhoArquivos+"/", function(f, c) {
-				console.log(f);
-				_cache.add(f, c);
-			}, (err) => {
-				console.log(err)
-			});
-
-			fileService.createIfNotExists(pref.caminhoProperties+"/"+pref.nomeArquivoSaida+"______.properties", "", (err)=>{
-				console.log(err);
-			});
-			
-		};
-	});
-};
-startCache();
-
-// ----------------Notificações ao alterar---------------
-var ch = () => {
+var getBranchName = () => {
 	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
 	return branchService.getBranch(pref.caminhoGit);
 }
+
 var msgCreator = (oldState, newState) => {
 	if (newState && newState != "") {
 		branchsAcessadas.push({
@@ -61,12 +41,38 @@ var msgCreator = (oldState, newState) => {
 			message: 'Trocamos a branch <' + oldState + "> para a branch <" + newState + "> ",
 			sound: true,
 		});
+		
+		//troca o conteudo do arquivo .properties
+		propertiesService.run();
+
 	} else {
 		branchsAcessadas = [];
 	}
 }
 
-notifyOnChange.notifyOnChange(ch, msgCreator, 5000).init();
+function startCache(){
+	cache.loader((_cache) => {
+		var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
+		var mapa = dataMananger.getAll(dataMananger.tableNames.MAPA);
+		if (pref) {
+			fileService.readFiles(pref.caminhoArquivos+"/", function(f, c) {
+				console.log(f);
+				_cache.add(f, c);
+			}, (err) => {
+				console.log(err)
+			});
+
+			// inicia a mágica da troca de conteudo do arquivo !
+			propertiesService = new PropertiesService(pref, cache, mapa);
+			propertiesService.addBranchProvider(getBranchName);
+		};
+	});
+};
+startCache();
+
+// ----------------Notificações ao alterar---------------
+
+notifyOnChange.notifyOnChange(getBranchName, msgCreator, 5000).init();
 
 // --------------------------------------------------------
 

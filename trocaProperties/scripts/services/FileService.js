@@ -17,8 +17,7 @@ module.exports.fileService = function() {
 		},
 		read: function(path, onRead) {
 			fs.readFile(path, 'utf8', function(err, fileContents) {
-				if (err) throw err;
-				console.log(fileContents);
+				if (err) throw new err;
 				if (typeof onRead == 'function') {
 					onRead(fileContents, err);
 				} else {
@@ -44,11 +43,13 @@ module.exports.fileService = function() {
 				});
 			});
 		},
-		createIfNotExists: function(path, data, onComplete){
-			fs.writeFile(path, data, { flag: 'wx' }, function (err) {
-			    if (err) throw err;
+		write: function(path, data, onComplete){
+			fs.writeFile(path, data, {encoding:'utf8'}, function (err) {
 			    onComplete(err);
 			});
+		},
+		clear: function(path, onComplete){
+			this.write(path,"",onComplete);
 		}
 	}
 }();
