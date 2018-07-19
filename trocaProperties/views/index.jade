@@ -13,8 +13,12 @@ block content
    
   div(class='tab-content' id="tab-container")
    div(class='tab-content-item active xs-1', id="home")
-    p diretório #{preferences.caminhoGit}
-    p branch #{branch_atual}
+    p Branch atual #{preferences.caminhoGit} #[i(class="fa fa-arrow-right")] #{branch_atual}
+    br
+    h3 Controles
+    div
+      a(class="button btn-link", href="/reloadCacheFiles") Recarregar arquivos
+      a(class="button btn-link", href="/cacheFiles") Ver arquivos
 
    div(class='tab-content-item xs-1', id="configuracao")
     h3 Configurações
@@ -67,4 +71,12 @@ block content
 
    div(class='tab-content-item xs-1', id="historico")
     h3 Historico das trocas de branch
-    #{historico}
+
+    div
+      each hist, i in historico
+        div(class="item-historico")
+          span(class="hora") #{hist.date}
+          span #{hist.branchAntiga}
+          i(class="fa fa-arrow-right")
+          span #{hist.branchNova}
+

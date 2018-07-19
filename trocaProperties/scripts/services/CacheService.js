@@ -43,10 +43,7 @@ module.exports = class Cache {
 		var pesq = this._base.filter(function(index) {
 			return chave == index.chave;
 		});
-
-		console.log("%s   ---   %s", chave, pesq);
-
-
+		console.log("Chave: %s   ---   Ret.: %s", chave, JSON.stringify(pesq));
 		return pesq.length > 0 ? pesq[0] : null;
 	}
 

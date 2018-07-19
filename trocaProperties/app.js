@@ -8,10 +8,11 @@ var express = require('express'),
 	http = require('http'),
 	path = require('path');
 
+var moment = require('moment');
+
 const notifier = require('node-notifier');
 const notifyOnChange = require('./scripts/notifyOnChange');
 const branchService = require('./scripts/services/BranchService');
-const PreferencesService = require('./scripts/services/PreferencesService');
 const fileService = require('./scripts/services/FileService').fileService;
 const CacheService = require('./scripts/services/CacheService');
 const PropertiesService = require('./scripts/services/PropertiesService');
@@ -29,19 +30,23 @@ var getBranchName = () => {
 	return branchService.getBranch(pref.caminhoGit);
 }
 
-var msgCreator = (oldState, newState) => {
+var onChangeBranch = (oldState, newState) => {
 	if (newState && newState != "") {
 		branchsAcessadas.push({
 			branchAntiga: oldState,
 			branchNova: newState,
-			date: new Date()
+			date: moment().format("DD/MM/YYYY  hh:mm")
 		});
+		
+		/*
+		removido as notificações de troca de banch
 		notifier.notify({
 			title: 'Troca de branch',
 			message: 'Trocamos a branch <' + oldState + "> para a branch <" + newState + "> ",
 			sound: true,
 		});
-		
+		*/
+
 		//troca o conteudo do arquivo .properties
 		propertiesService.run();
 
@@ -56,7 +61,6 @@ function startCache(){
 		var mapa = dataMananger.getAll(dataMananger.tableNames.MAPA);
 		if (pref) {
 			fileService.readFiles(pref.caminhoArquivos+"/", function(f, c) {
-				console.log(f);
 				_cache.add(f, c);
 			}, (err) => {
 				console.log(err)
@@ -65,6 +69,7 @@ function startCache(){
 			// inicia a mágica da troca de conteudo do arquivo !
 			propertiesService = new PropertiesService(pref, cache, mapa);
 			propertiesService.addBranchProvider(getBranchName);
+			propertiesService.run();
 		};
 	});
 };
@@ -72,7 +77,7 @@ startCache();
 
 // ----------------Notificações ao alterar---------------
 
-notifyOnChange.notifyOnChange(getBranchName, msgCreator, 5000).init();
+notifyOnChange.notifyOnChange(getBranchName, onChangeBranch, 5000).init();
 
 // --------------------------------------------------------
 
@@ -103,7 +108,7 @@ app.get('/', (req, res) => {
 		title: 'Meu git',
 		branch_atual: branchService.getBranch(pref.caminhoGit),
 		preferences: pref,
-		historico: JSON.stringify(branchsAcessadas),
+		historico: branchsAcessadas,
 		mapa: mapa
 	})
 });

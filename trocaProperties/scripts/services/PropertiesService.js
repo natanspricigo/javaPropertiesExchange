@@ -1,5 +1,6 @@
 const Cache = require('./CacheService');
 const fileService = require('./FileService').fileService;
+const notifier = require('node-notifier');
 
 class PropertiesService {
 
@@ -12,6 +13,7 @@ class PropertiesService {
 		};
 		this.branchAtual = null;
 		this.branchNova = null;
+		this.extensionFile = ".properties";
 		this.run();
 	}
 
@@ -50,32 +52,29 @@ class PropertiesService {
 	trocaProperties(novaBranch) {
 
 		const fileBranch = this.getCache().get(this.getFileNameWithBrach(novaBranch));
+		const extensionFile = this.extensionFile;
 
 		if (fileBranch && this.preferences) {
-			const pathOut = this.preferences.caminhoProperties + "/" + this.preferences.nomeArquivoSaida + "______.properties";
+			
+			const pathOut = this.preferences.caminhoProperties 
+							+ "/" 
+							+ this.preferences.nomeArquivoSaida 
+							+ "______"
+							+ extensionFile;
 
-			function grava() {
-				fileService.write(pathOut, fileBranch.valor, (err) => {
-					if (err) {
-						console.log(err);
-					} else {
-						console.log('Gravado %s bytes no arquivo %s', fileBranch.valor.length, pathOut)
-					}
-
-				});
-			}
-
-			fileService.clear(pathOut, (err) => {
+			fileService.write(pathOut, fileBranch.valor, (err) => {
 				if (err) {
 					console.log(err);
 				} else {
-					console.log('Arquivo %s limpo !', pathOut);
-					grava();
+					console.log('Gravado %s bytes no arquivo %s', fileBranch.valor.length, pathOut);
+					notifier.notify({
+						title: 'Troca de ' + extensionFile,
+						message: "Trocamos de arquivo, agora é o arquivo : " + fileBranch.chave,
+						sound: true,
+						wait: false
+					});
 				}
 			});
-
-
-
 		};
 	}
 }
