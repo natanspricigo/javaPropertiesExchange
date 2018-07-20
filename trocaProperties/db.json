@@ -1,25 +1,6 @@
 {
-  "count": 27,
+  "count": 4,
   "preferencias": [
-    {
-      "id": 1,
-      "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
-      "caminhoProperties": "/Users/Natan",
-      "caminhoArquivos": "/Users/Natan/clinicaProperties",
-      "nomeArquivoSaida": "clinica_dsv"
-    },
-    {
-      "id": 1,
-      "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
-      "caminhoProperties": "/Users/Natan",
-      "caminhoArquivos": "/Users/Natan/clinicaProperties"
-    },
-    {
-      "id": 1,
-      "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
-      "caminhoProperties": "/Users/Natan",
-      "caminhoArquivos": "/Users/Natan/clinicaProperties"
-    },
     {
       "id": 1,
       "caminhoGit": "/Volumes/Documentos/Workspaces/fontes/ClinicaNasNuvens",
@@ -31,49 +12,19 @@
   "historico": [],
   "mapa": [
     {
-      "branch": "fast",
-      "nomeArquivo": "fast",
-      "id": 1
-    },
-    {
-      "branch": "b_task_8441",
-      "nomeArquivo": "fast",
-      "id": 1
-    },
-    {
-      "branch": "sprint_fast_27",
-      "nomeArquivo": "fast",
-      "id": 1
-    },
-    {
-      "branch": "sprint_fast_26",
-      "nomeArquivo": "fast",
-      "id": 1
-    },
-    {
       "branch": "master",
       "nomeArquivo": "master",
       "id": 1
     },
     {
-      "branch": "master3",
-      "nomeArquivo": "fast",
-      "id": 2
-    },
-    {
-      "branch": "master4",
-      "nomeArquivo": "master",
-      "id": 3
-    },
-    {
       "branch": "sprint_77",
       "nomeArquivo": "sprint",
-      "id": 4
+      "id": 2
     },
     {
       "branch": "sprint_fast_28",
       "nomeArquivo": "fast",
-      "id": 5
+      "id": 3
     }
   ]
 }

@@ -43,10 +43,10 @@ class PropertiesService {
 			});
 
 			if (itemMapa && itemMapa.length > 0) {
-				return itemMapa[0].nomeArquivo + ".properties";
+				return itemMapa[0].nomeArquivo + this.extensionFile;
 			};
 		};
-		return "default.properties";
+		return "default" + this.extensionFile;
 	}
 
 	trocaProperties(novaBranch) {
@@ -59,7 +59,6 @@ class PropertiesService {
 			const pathOut = this.preferences.caminhoProperties 
 							+ "/" 
 							+ this.preferences.nomeArquivoSaida 
-							+ "______"
 							+ extensionFile;
 
 			fileService.write(pathOut, fileBranch.valor, (err) => {

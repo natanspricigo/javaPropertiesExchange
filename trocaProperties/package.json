@@ -6,7 +6,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "express": "^3.3.0",
     "git-branch": "^2.0.1",
     "jade": "*",
