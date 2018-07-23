@@ -128,9 +128,7 @@ app.get('/reloadCacheFiles', (req, res) => {
 });
 
 app.get('/branch', (req, res) => {
-
 	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
-
 	res.json(branchService.getBranch(pref.caminhoGit));
 });
 
@@ -139,7 +137,7 @@ app.get('/history', (req, res) => {
 });
 
 app.get('/remover-mapa', (req, res) => {
-	console.log("removendo..." + req.body.codigo);
+ 	dataMananger.remove(dataMananger.tableNames.MAPA, req.param('codigo'));
 	res.redirect('/');
 });
 

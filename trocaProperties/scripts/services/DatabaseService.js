@@ -71,9 +71,10 @@ class DatabaseMananger{
 	}
 
 	remove(table, idToRemove){
+		console.warn("Removendo codigo %s", idToRemove);
 		return this.__getTable(table)
 		  .remove({ id: idToRemove})
-		  .write()
+		  .write();
 	}
 }
 
