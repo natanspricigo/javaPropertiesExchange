@@ -2,14 +2,21 @@
 Sistema em nodejs que observa uma branch git e troca o .properties java de acordo com um mapa ligando a branch ao arquivo .properties
 
 
-Modo de uso: 
+### Modo de uso: 
 
 > Criar uma pasta (qualquer nome), contendo os arquivos .properties usados no sistema.
 	Deve conter um arquivo chamado default.properties, onde o mesmo vai ser chamado quando não encontrar um que esta mapeado.
 
     ex.: default.properties, master.properties, sprint_1.properties ...
 
-> Iniciar o servidor via linha de comando: npm start
+> Iniciar o servidor via linha de comando:
+
+```bash
+	$ git clone git@github.com:natanspricigo/javaPropertiesExchange.git
+	$ cd javaPropertiesExchange/trocaProperties
+	$ npm start
+```
+	
 
 > Acessar o servidor na porta listada (geralmente 3000): http://localhost:3000/
 
@@ -36,10 +43,10 @@ Modo de uso:
 > Na aba histórico encontra-se as Branchs trocadas durando o periodo que o servidor ficou ativo, mostrando a data e hora, branch atual e branch antiga.
 
 
-> Pontos de melhoria: 
-	- Adiconar testes;
-	- Melhorar código;
-	- Melhorar interface;
-	- Salvar histórico no banco;
-	- Empacotar aplicação;
+### Principais pontos de melhoria:
+- Adiconar testes;
+- Melhorar código;
+- Melhorar interface;
+- Salvar histórico no banco;
+- Empacotar aplicação;
 
