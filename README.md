@@ -10,6 +10,7 @@ Modo de uso:
     ex.: default.properties, master.properties, sprint_1.properties ...
 
 > Iniciar o servidor via linha de comando:
+	
 	git clone git@github.com:natanspricigo/javaPropertiesExchange.git
 	cd javaPropertiesExchange/trocaProperties
 	npm start
