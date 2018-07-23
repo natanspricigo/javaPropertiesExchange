@@ -37,9 +37,9 @@ Modo de uso:
 
 
 > Pontos de melhoria: 
-	- Adiconar testes;
-	- Melhorar código;
-	- Melhorar interface;
-	- Salvar histórico no banco;
-	- Empacotar aplicação;
+- Adiconar testes;
+- Melhorar código;
+- Melhorar interface;
+- Salvar histórico no banco;
+- Empacotar aplicação;
 
