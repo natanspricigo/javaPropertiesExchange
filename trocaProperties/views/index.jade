@@ -1,9 +1,7 @@
 extends layout
 
 block content
-  h1= title
-  
-  p A branch atual é: #[span.branch #{branch_atual}]
+  h1.title= title
 
   ul(class="tab" id="tab")
    li(class='tab-item active', data-tab="home") #[a Home ]
@@ -13,13 +11,13 @@ block content
    
   div(class='tab-content' id="tab-container")
    div(class='tab-content-item active xs-1', id="home")
-    p Branch atual 
-      i(class="nome-branch") #{preferences.caminhoGit} #[i(class="fa fa-arrow-right")] #{branch_atual}
+    p A branch analisada é a 
+      i(class="nome-branch") #{preferences.caminhoGit} #[i(class="fa fa-arrow-right")] #[span.branch ##{branch_atual}]
     br
     h3 Controles
     div
       a(class="button btn-link", href="/reloadCacheFiles") Recarregar arquivos
-      a(class="button btn-link", href="/cacheFiles") Ver arquivos
+      a(class="button btn-link", href="/cacheFiles", target="_blank") Ver arquivos
 
    div(class='tab-content-item xs-1', id="configuracao")
     h3 Configurações

@@ -7,9 +7,12 @@ a {
     color: #00B7FF;
 }
 
+h1.title {
+    color: #106513;
+}
+
 .branch {
-    color: #148a18;
-    font-size: 19px;
+    font-weight: bolder;
 }
 
 ul.tab {
@@ -220,5 +223,6 @@ ul.listaMapa li .mp-arquivo{
     margin: 0 10px 0 10px;
 }
 .nome-branch{
-    color: #bbb;
+    color: #888787;
+    border-bottom: dashed 1px;
 }

@@ -4,7 +4,6 @@
 
 var express = require('express'),
 	routes = require('./routes'),
-	user = require('./routes/user'),
 	http = require('http'),
 	path = require('path');
 
@@ -105,15 +104,13 @@ app.get('/', (req, res) => {
 	var mapa = dataMananger.getAll(dataMananger.tableNames.MAPA);
 
 	routes.index(req, res, {
-		title: 'Meu git',
+		title: 'Java properties exchange',
 		branch_atual: branchService.getBranch(pref.caminhoGit),
 		preferences: pref,
 		historico: branchsAcessadas,
 		mapa: mapa
 	})
 });
-
-app.get('/users', user.list);
 
 app.get('/cacheFiles', (req, res) => {
 	res.json(cache.all());
