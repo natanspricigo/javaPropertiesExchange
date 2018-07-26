@@ -1,5 +1,5 @@
 {
-  "count": 4,
+  "count": 7,
   "preferencias": [
     {
       "id": 1,
@@ -9,7 +9,20 @@
       "nomeArquivoSaida": "clinica_dsv"
     }
   ],
-  "historico": [],
+  "historico": [
+    {
+      "branchAntiga": "sprint_fast_28",
+      "branchNova": "master",
+      "date": "26/07/2018  10:49",
+      "id": 1
+    },
+    {
+      "branchAntiga": "master",
+      "branchNova": "sprint_fast_28",
+      "date": "26/07/2018  10:49",
+      "id": 2
+    }
+  ],
   "mapa": [
     {
       "branch": "master",
@@ -25,6 +38,11 @@
       "branch": "sprint_fast_28",
       "nomeArquivo": "fast",
       "id": 3
+    },
+    {
+      "branch": "b_task_7535",
+      "nomeArquivo": "fast",
+      "id": 4
     }
   ]
 }

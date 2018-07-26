@@ -21,7 +21,6 @@ const Utilitarios = require('./scripts/Utilitarios/Utilitarios');
 
 const dataMananger = new dbm.DatabaseMananger();
 var cache = new CacheService();
-var branchsAcessadas = [];
 var propertiesService;
 
 var getBranchName = () => {
@@ -31,26 +30,17 @@ var getBranchName = () => {
 
 var onChangeBranch = (oldState, newState) => {
 	if (newState && newState != "") {
-		branchsAcessadas.push({
+		var hist = {
 			branchAntiga: oldState,
 			branchNova: newState,
 			date: moment().format("DD/MM/YYYY  hh:mm")
-		});
+		};
 		
-		/*
-		removido as notificações de troca de banch
-		notifier.notify({
-			title: 'Troca de branch',
-			message: 'Trocamos a branch <' + oldState + "> para a branch <" + newState + "> ",
-			sound: true,
-		});
-		*/
+		dataMananger.insert(dataMananger.tableNames.HISTORICO, hist);
 
 		//troca o conteudo do arquivo .properties
 		propertiesService.run();
 
-	} else {
-		branchsAcessadas = [];
 	}
 }
 
@@ -102,12 +92,13 @@ app.get('/', (req, res) => {
 
 	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
 	var mapa = dataMananger.getAll(dataMananger.tableNames.MAPA);
+	var historico = dataMananger.getAll(dataMananger.tableNames.HISTORICO);
 
 	routes.index(req, res, {
 		title: 'Java properties exchange',
 		branch_atual: branchService.getBranch(pref.caminhoGit),
 		preferences: pref,
-		historico: branchsAcessadas,
+		historico: historico,
 		mapa: mapa
 	})
 });
@@ -130,7 +121,8 @@ app.get('/branch', (req, res) => {
 });
 
 app.get('/history', (req, res) => {
-	res.json(branchsAcessadas);
+	var historico = dataMananger.getAll(dataMananger.tableNames.HISTORICO);
+	res.json(historico);
 });
 
 app.get('/remover-mapa', (req, res) => {
