@@ -4,8 +4,8 @@
   "description": "Sistema em nodejs que observa uma branch git e troca o .properties java de acordo com um mapa ligando a branch ao arquivo .properties",
   "main": "index.js",
   "scripts": {
-    "run-app":"nwbuild -r ./trocaProperties/",
-    "run-inline":"cd ./trocaProperties/ && npm start",
+    "app":"nwbuild -r ./trocaProperties/",
+    "inline":"cd ./trocaProperties/ && npm start",
     "pack": "cd ./pack && gulp"
   },
   "repository": {

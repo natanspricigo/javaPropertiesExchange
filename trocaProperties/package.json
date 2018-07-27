@@ -1,11 +1,24 @@
 {
+  "node-main": "app.js",
+  "main": "http://localhost:3000/#",
   "name": "application-name",
+  "description": "Troca arquivos de propriedades para alegria dos programadores.",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
+    "window": {
+    "title": "Java properties exchange",
+    "icon": "icon.png",
+    "toolbar": true,
+    "frame": true,
+    "position": "center",
+    "min_width": 800,
+    "min_height": 600
+  },
   "dependencies": {
+    "deck": "latest",
     "express": "^3.3.0",
     "git-branch": "^2.0.1",
     "jade": "*",
