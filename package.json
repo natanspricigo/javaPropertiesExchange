@@ -1,0 +1,21 @@
+{
+  "name": "javapropertiesexchange",
+  "version": "1.0.0",
+  "description": "Sistema em nodejs que observa uma branch git e troca o .properties java de acordo com um mapa ligando a branch ao arquivo .properties",
+  "main": "index.js",
+  "scripts": {
+    "run-app":"nwbuild -r ./trocaProperties/",
+    "run-inline":"cd ./trocaProperties/ && npm start",
+    "pack": "cd ./pack && gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natanspricigo/javaPropertiesExchange.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natanspricigo/javaPropertiesExchange/issues"
+  },
+  "homepage": "https://github.com/natanspricigo/javaPropertiesExchange#readme"
+}
