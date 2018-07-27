@@ -63,4 +63,5 @@ typings/
 package-lock.json
 .DS_Store
 *db.json
-
+/pack/build/*
+/pack/cache/*
