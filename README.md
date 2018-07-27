@@ -47,6 +47,5 @@ Sistema em nodejs que observa uma branch git e troca o .properties java de acord
 - Adiconar testes;
 - Melhorar código;
 - Melhorar interface;
-- Salvar histórico no banco;
 - Empacotar aplicação;
 
