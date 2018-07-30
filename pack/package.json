@@ -1,6 +1,6 @@
 {
-  "name": "example",
-  "version": "0.0.0",
+  "name": "javapropertiesexchange",
+  "version": "0.0.1",
   "devDependencies": {
     "gulp": "^3.x",
     "nw-builder": "^2.x"

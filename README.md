@@ -12,9 +12,11 @@ Sistema em nodejs que observa uma branch git e troca o .properties java de acord
 > Iniciar o servidor via linha de comando:
 
 ```bash
-	$ git clone git@github.com:natanspricigo/javaPropertiesExchange.git
-	$ cd javaPropertiesExchange/trocaProperties
-	$ npm start
+	 git clone git@github.com:natanspricigo/javaPropertiesExchange.git
+	 cd javaPropertiesExchange/trocaProperties
+	 npm run inline		// excuta o app em linha de comando
+	 npm run app 		// excuta o app abrindo uma tela grafica, mas pode ser acessado de qualquer navegador
+	 npm run pack 		//realiza o empacotamento do app, para as plataformas 'win32', 'win64' e 'osx64'
 ```
 	
 
