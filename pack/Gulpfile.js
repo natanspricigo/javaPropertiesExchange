@@ -6,7 +6,7 @@ gulp.task('nw', function () {
 
     var nw = new NwBuilder({
         version: '0.32.0',
-        files: '../trocaProperties/**',
+        files: '../app/**',
         macIcns: './icons/icon.icns',
         macPlist: {mac_bundle_id: 'myPkg'},
         platforms: ['win32', 'win64', 'osx64']
