@@ -4,9 +4,6 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 
-var ps = require("./PreferencesService");
-var preferencesSerice = new ps.PreferencesSerice();
-
 class DatabaseMananger{
 
 	constructor(){
@@ -49,17 +46,14 @@ class DatabaseMananger{
 	}
 
 	get(table, id){
-		var retorno = this.__getTable(table).find({ id: id }).value();
+		var retorno = this.__getTable(table).find({ "id": Number(id) }).value();
 		if (retorno) {
 			return retorno;
-		}else{
-			return preferencesSerice.newPreference();
 		}
 	}
 	
 	getAll(table){
-		return db.get(table)
-		  .value()
+		return db.get(table).value()
 	}
 
 	update(table, newData){
@@ -70,11 +64,13 @@ class DatabaseMananger{
 		  .write();
 	}
 
-	remove(table, idToRemove){
-		console.warn("Removendo codigo %s", idToRemove);
-		return this.__getTable(table)
-		  .remove({ id: idToRemove})
-		  .write();
+	remove(table, obj){
+		if (obj) {
+			console.warn("Removendo codigo %s da tabela %s", (obj?obj.id:"???????"), table);
+			return this.__getTable(table)
+			  .remove(obj)
+			  .write();
+		}
 	}
 }
 

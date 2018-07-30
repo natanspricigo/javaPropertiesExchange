@@ -126,7 +126,8 @@ app.get('/history', (req, res) => {
 });
 
 app.get('/remover-mapa', (req, res) => {
- 	dataMananger.remove(dataMananger.tableNames.MAPA, req.param('codigo'));
+	var map = dataMananger.get(dataMananger.tableNames.MAPA, Number(req.param('codigo')));
+	dataMananger.remove(dataMananger.tableNames.MAPA, map);
 	res.redirect('/');
 });
 
