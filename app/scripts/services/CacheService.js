@@ -36,6 +36,12 @@ module.exports = class Cache {
 	}
 
 	all(){
+		if (this._base) {
+			this._base.forEach((e)=>{
+				e.valor = String(e.valor);
+			});
+		}
+
 		return this._base;
 	}
 
