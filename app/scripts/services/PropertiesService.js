@@ -23,7 +23,7 @@ class PropertiesService {
 
 	run() {
 		this.branchNova = this.branchProvider();
-		if (this.branchNova != null && this.branchNova != this.branchAtual) {
+		if (this.branchNova && this.branchNova != null && this.branchNova != this.branchAtual) {
 			this.trocaProperties(this.branchNova);
 			this.branchAtual = this.branchNova;
 		};

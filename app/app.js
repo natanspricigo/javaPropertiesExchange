@@ -23,9 +23,14 @@ const dataMananger = new dbm.DatabaseMananger();
 var cache = new CacheService();
 var propertiesService;
 
+const PREF_DEFAULT = {"caminhoGit" : "", "caminhoArquivos":"", "caminhoProperties":"", "nomeArquivoSaida":""};
+
 var getBranchName = () => {
 	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
-	return branchService.getBranch(pref.caminhoGit);
+	if (pref) {
+		return branchService.getBranch(pref.caminhoGit);
+	}
+	return "";
 }
 
 var onChangeBranch = (oldState, newState) => {
@@ -39,7 +44,9 @@ var onChangeBranch = (oldState, newState) => {
 		dataMananger.insert(dataMananger.tableNames.HISTORICO, hist);
 
 		//troca o conteudo do arquivo .properties
-		propertiesService.run();
+		if (propertiesService) {
+			propertiesService.run();
+		}
 
 	}
 }
@@ -90,7 +97,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', (req, res) => {
 
-	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
+	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1) || PREF_DEFAULT;
 	var mapa = dataMananger.getAll(dataMananger.tableNames.MAPA);
 	var historico = dataMananger.getAll(dataMananger.tableNames.HISTORICO);
 
@@ -116,7 +123,7 @@ app.get('/reloadCacheFiles', (req, res) => {
 });
 
 app.get('/branch', (req, res) => {
-	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1);
+	var pref = dataMananger.get(dataMananger.tableNames.PREFERENCIAS, 1) || PREF_DEFAULT;
 	res.json(branchService.getBranch(pref.caminhoGit));
 });
 

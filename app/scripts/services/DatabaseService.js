@@ -28,12 +28,11 @@ class DatabaseMananger{
 				cod = index.id;
 			};
 		});
-		return cod;
+		return cod || 0;
 	}
 
 	insert(table, data){
-
-		if (data && (data.id == undefined || data.id == "")) {
+		if (data && (data.id == undefined || data.id == "" || data.id == null || isNaN(data.id))) {
 			data.id = this.__findMaxIDToTable(table) + 1;
 		}else{
 			this.update(table, data);
