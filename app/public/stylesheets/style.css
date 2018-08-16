@@ -83,6 +83,18 @@ li.item-tab a:hover {
     text-decoration: underline;
 }
 
+.btn-float{
+    float: right;
+    padding: 6px;
+    margin: 6px;
+    border: solid 1px #106513;
+    border-radius: 8px;
+    width: 60px;
+    height: 40px;
+    color: #106513;
+    background-color: transparent;
+}
+
 .align-right{
     float: right;
 }

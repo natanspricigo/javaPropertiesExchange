@@ -8,7 +8,10 @@ block content
    li(class='tab-item', data-tab="configuracao") #[a Configuração ]
    li(class='tab-item', data-tab="mapper") #[a Mapa ]
    li(class='tab-item', data-tab="historico") #[a Histórico ]
-   
+   li(class='tab-options')
+      button(class="btn-float", onclick="location.reload()")
+        i(class="fa fa-sync-alt")
+
   div(class='tab-content' id="tab-container")
    div(class='tab-content-item active xs-1', id="home")
     p A branch analisada é a 
